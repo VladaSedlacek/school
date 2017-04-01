@@ -1,0 +1,101 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[czech]{babel}
+\usepackage{a4wide}
+\usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,tikz}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\N}{\mathrm{N}}
+\newcommand{\No}{\mathrm{N}_{\Qbb}^K}
+\newcommand{\Ok}{\ensuremath{\mathcal{O}_K}}
+\newcommand{\Ol}{\ensuremath{\mathcal{O}_L}}
+\newcommand{\Cl}{\ensuremath{\mathcal{C}l}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\rr}{\mathfrak{r}}
+\newcommand{\al}{\alpha}
+\newcommand{\Mat}{\ensuremath{\text{Mat}(2,\mathbb{Z})}}
+\newcommand{\Char}{\mathrm{char }}
+\newcommand{\blank}{{-}}
+\newcommand{\dd}{\partial}
+%\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+%\theoremstyle{definition}
+\newcounter{exercise}
+\newtheorem{ex}[exercise]{Exercise}
+%\newenvironment{sol}{\paragraph{Solution:}}{\hfill$\square$}
+%\newtheorem*{sol}{Solution}
+
+\begin{document}
+\pagestyle{fancy}                      %Pro větší­ možnosti práce se záhlaví­mi a zápatími
+\fancyhf{}                             %"vvyčištění záhlaví a zápatí"                                         
+%\renewcommand{\headheight}{25 pt}                  %
+\addtolength{\topmargin}{-30 pt}                   %
+\setlength{\headsep}{10 pt}                      %
+\fancyhead[L]{{\emph{M8130 Algebraic topology, homework 4}}}  %
+\fancyhead[R]{{\emph{Vladimír Sedláček}}}                 % Nastavení­ pro titulní­ stranu
+%\fancyfoot[L]{Školní rok 2016/2017}                %
+%\renewcommand{\footrulewidth}{0.8 pt}              %
+\renewcommand{\headrulewidth}{1 pt}                %               %
+\renewcommand*{\proofname}{Solution}
+%\setcounter{exercise}{2}
+\ex\mbox{} 
+\begin{proof}
+By cutting the sphere with two handles $X$ into two congruent parts such that each contains one half of each handle, we obtain the decomposition $X=A\cup B$, where $A\simeq B \simeq S^1\vee S^1$ and $A\cap B \simeq S^1\sqcup S^1\sqcup S^1$. Since $$H_n(S^1)=
+\begin{cases}
+\Z \quad \text{ for } n=0,1\\
+0 \quad \text{ for } n\geq 2.
+\end{cases}$$
+and $H_n(\bigsqcup_{\alpha\in J} X_\alpha)=\bigoplus_{\alpha\in J} H_n(X_\alpha)$ (and the fact that $A$ and $B$ are connected), Mayer-Vietoris yields 
+\begin{equation*}
+\begin{split}
+\cdots\to &0\to 0\to H_2(X)\xrightarrow{\dd_*} \\
+\to  &\Z\oplus\Z\oplus\Z \xrightarrow{f} \Z\oplus\Z\oplus\Z\oplus\Z \xrightarrow{g} H_1(X) \xrightarrow{\dd_*} \\
+\to  &\Z\oplus\Z\oplus\Z \xrightarrow{h} \Z\oplus\Z\to H_0(X) \to 0.
+\end{split}
+\end{equation*}
+Now, $H_0(X)=\Z$ since $X$ is clearly connected and $H_n(\R P^2)=0$ for $n\geq 3$ (since all the other omitted terms of the long exact sequence above are zero). Next, a careful examination of the inclusions $A\cap B\to A, A\cap B \to B$ reveals that $f$ is given by $f(1,0,0)=(1,0,1,0), f(0,1,0)=(0,1,0,1), f(0,0,1)=(1,1,1,1),$ hence $\im f\cong \Z\oplus\Z$ and $H_2(X)=\ker f\cong \Z$. Another geometric examination of the inclusions shows that $h(a,b,c)=(a+b+c,a+b+c)$ for all $a,b,c\in\Z$, hence $\im \dd_*=\ker h\cong\Z\oplus \Z$ . Together with the fact that $$\ker \dd_*=\im g\cong  \Z\oplus\Z\oplus\Z\oplus\Z/\ker g=\Z\oplus\Z\oplus\Z\oplus\Z/\im f\cong \Z\oplus\Z,$$
+this gives us (by the standard decomposition of the long exact sequence) a short exact sequence $$0\to \ker \dd_*=\Z\oplus\Z\to H_1(X)\to \im \dd_*=\Z\oplus\Z\to 0$$
+which splits, since $\Z\oplus\Z$ is a free (hence projective) $\Z$-module. Therefore $$H_1(X)\cong\Z\oplus\Z\oplus\Z\oplus\Z.$$
+\end{proof}
+
+\ex\mbox{} 
+\begin{proof}
+We have $\R P^2=D^2\cup_i M$, where $M$ is the Möbius band and $i:S^1\to M$ is the inclusion to the boundary of $M$. In fact, $S^1$ is a deformation retract of $M$, hence $$H_n(M)=H_n(S^1)=
+\begin{cases}
+\Z \quad \text{ for } n=0,1\\
+0 \quad \text{ for } n\geq 2.
+\end{cases}$$
+Using Mayer-Vietoris with $A=D^2$ and $B=M$ and noting that $D^2\cap M =S^1$ and $D^2$ is contractible, we have the following long exact sequence:
+\begin{equation*}
+\begin{split}
+\cdots\to &H_2(S^1)=0\to H_2(D^2)\oplus H_2(M)=0\to H_2(\R P^2)\xrightarrow{\dd_*} \\
+\to  &H_{1}(S^1)=\Z\xrightarrow{f}
+H_1(D^2)\oplus H_1(M)=\Z \to
+H_1(\R P^2) \xrightarrow{\dd_*} \\
+\to & H_0(S^1)=\Z\xrightarrow{g} H_0(D^2)\oplus H_0(M)=\Z\oplus\Z\to H_0(\R P^2) \to 0.
+\end{split}
+\end{equation*}
+First off, $H_0(\R P^2)=\Z$ since $\R P^2$ is connected (it can be realized as a quotient of $S^2$ and $H_n(\R P^2)=0$ for $n\geq 3$ (since all the other omitted terms of the long exact sequence above are zero).  Next, the map $f$ is nonzero, hence injective (in fact, it is just multiplication by $2$, since $i$ is a degree 2 covering map), since $j\circ i \sim \id_{S^1}$ for some $j:M\to S^1$ and for the same reason $g$ is injective (in fact, it is the diagonal map $g(a)=(a,a)$). Thus we have $0=\ker f=\im \dd _*$, hence $H_2(\R P^2)=\ker \dd_*=\im 0=0$, and there is a short exact sequence $0\to\Z\xrightarrow{2\times}\Z\to H_1(\R P^2)\to 0.$ It follows that $H_1(\R P^2)$ is the cokernel of $2\times$, so that $H_1(\R P^2)=\Z/2$.
+\end{proof}
+
+
+
+\end{document}

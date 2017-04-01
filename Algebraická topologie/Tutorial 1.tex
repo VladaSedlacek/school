@@ -1,0 +1,112 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{a4wide}
+\usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,tikz}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\cok}{\mathrm{coker}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\N}{\mathrm{N}}
+\newcommand{\No}{\mathrm{N}_{\Qbb}^K}
+\newcommand{\Ok}{\ensuremath{\mathcal{O}_K}}
+\newcommand{\Ol}{\ensuremath{\mathcal{O}_L}}
+\newcommand{\Cl}{\ensuremath{\mathcal{C}l}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\rr}{\mathfrak{r}}
+\newcommand{\al}{\alpha}
+\newcommand{\Mat}{\ensuremath{\text{Mat}(2,\mathbb{Z})}}
+\newcommand{\Char}{\mathrm{char }}
+\newcommand{\blank}{{-}}
+%\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+%\theoremstyle{definition}
+\newtheorem{ex}{Exercise}
+%\newenvironment{sol}{\paragraph{Solution:}}{\hfill$\square$}
+%\newtheorem*{sol}{Solution}
+
+\begin{document}
+\pagestyle{fancy}                      %Pro větší­ možnosti práce se záhlaví­mi a zápatími
+\fancyhf{}                             %"vvyčištění záhlaví a zápatí"                                         
+%\renewcommand{\headheight}{25 pt}                  %
+\addtolength{\topmargin}{-30 pt}                   %
+\setlength{\headsep}{10 pt}                      %
+\fancyhead[L]{{\emph{M8130 Algebraic topology, exercises 1}}}  %
+\fancyhead[R]{{\emph{23.2.2017}}}                 % Nastavení­ pro titulní­ stranu
+%\fancyfoot[L]{Školní rok 2016/2017}                %
+%\renewcommand{\footrulewidth}{0.8 pt}              %
+\renewcommand{\headrulewidth}{1 pt}                %               %
+\renewcommand*{\proofname}{Solution}
+
+\rem All sets are assumed to be topological spaces and all maps are assumed to be continuous unless stated otherwise. The symbol '=' will denote that two topological spaces are homeomorphic. The closed unit interval will be denoted by $I$ or $J$.
+
+\ex Prove that being homotopic is an equivalence relation (on the set of continuous maps between topological spaces).
+\begin{proof} Let $f,g,k:X\to Y$ be such that $f\sim g$, $g\sim k$, i.e. there exist maps $h,h':X\times I\to Y$ such that $h(x,0)=f(x)$, $h(x,1)=g(x)$, $h'(x,0)=g(x)$, $h'(x,1)=k(x)$.
+\begin{itemize}
+\item Reflexivity: the map $H_1:X\times I\to Y$ defined by $H_1(x,t):=f(x)$ for all $t\in I$ is a homotopy between $f$ and itself.
+\item Symmetry: the map $H_2:X\times I\to Y$ defined by $H_2(x,t):=h(x,1-t)$ for all $t\in I$ is a homotopy between $g$ and $f$.
+\item Transitivity: the map $H_3:X\times I\to Y$ defined by $H_3(x,t):=
+\begin{cases}
+h(x,2t)\quad \text{ for } 0\leq t \leq \frac{1}{2}\\
+h'(x,2t)\quad \text{ for } \frac{1}{2} < t \leq 1
+\end{cases}
+$ is a homotopy between $f$ and $k$.
+\end{itemize}
+\end{proof}
+
+\ex Let $\simeq$ be an equivalence relation on a topological space $X$. Prove that the map $f:X/\simeq \to Y$ is continuous iff $f\circ p:X\to Y$ is continuous, where $p:X\to X/\simeq$ is the canonical quotient projection.
+\begin{proof}
+The direction "$\Rightarrow$" follows from the facts that $p$ is continuous (in fact, the quotient topology is the final topology with respect to $p$) and the composition of continuous functions is again continuous. For "$\Leftarrow$", let $U\subseteq Y$ be open. Then $$p^{-1}(f^{-1}(U))=(f\circ p)^{-1}(U)$$ is open by continuity of $f\circ p$, so $f^{-1}(U)$ must also be open by the definition of quotient topology and we are done.
+\end{proof}
+
+\ex Show that $D^n/S^{n-1}=S^n$ using the map $f:D^n\to S^n$ given by $$f(x_1,\dots,x_n)=(2\sqrt{1-\norm{\textbf{x}}}\textbf{x},2\norm{\textbf{x}}^2-1)$$.
+\begin{proof}
+It's easy to see that $f$ is continuous. Moreover, its restriction to the interior of $D^n$ gives a bijection to $S^n\setminus\{(0,\dots,0,1)\}$ (the inverse function is given by $(\textbf{y},z)\mapsto \frac{1}{\sqrt{\frac{1-z}{2}}}\textbf{y}$) and we have $f(S^{n-1})=\{(0,\dots,0,1)\}$, so we can define $f':D^n/S^{n-1}\to S^n$ by $f'([\textbf{x}])=f(\textbf{x})$. Then $f'$ is a bijection, and by the previous exercise it is continuous. Finally, both $D^n/S^{n-1}$ and $S^n$ are compact (Hausdorff) spaces (since both $D^n$ and $S^n$ are closed bounded subsets of $\R^n$ and $R^{n+1}$, respectively, and $S^{n-1}\subseteq D^n$ is closed), so $f'$ must be a homeomorphism (a general fact for continuous bijections between compact spaces).
+\end{proof}
+
+\ex Let $f:X\to Y$ and $M_f=X\times I\cup_{j\times 1}Y$. Moreover, let $\iota_X:X\to M_f$ be given by $x\mapsto (x,0)$, $\iota_Y:Y\to M_f$ be given by $y\mapsto [y]$ and $r:M_f\to Y$ be given by $r(y)=y$, $r(x,t)=f(x)$. Show that
+\begin{enumerate}[i)]
+\item $Y$ is a deformation retract of $M_f$,
+\item $r\circ \iota_X=f$,
+\item $\iota_Y\circ f\sim \iota_X$.
+\end{enumerate}
+\begin{proof}\mbox{}\newline
+\begin{enumerate}[i)]
+\item Geometrically, the deformation retraction is realized by pushing $X$ along $I$ towards $Y$.
+\item We have $r\circ \iota_X(x)=r(x,0)=f(x)$ for all $x\in X$.
+\item The required homotopy $h:X\times J \to M_f$ is given by $h(x,s)=[(x,s)]$.
+\end{enumerate}
+\end{proof}
+
+\ex Show that the pair $(M_f,X)$ has the homotopic extension property (HEP), i.e. $\iota_X$ is a cofibration.
+\begin{proof}
+Let $g:I\times J\to\{0\}\times J\cup I\times\{0\}$ be any continuous map such that $g(0,s)=(0,s)$ and $g(1,s)=(1,0)$. Then the map $r:M_f\times J\to X\times\{0\}\times J\cup M_f\times\{0\}$ defined by 
+$r(x,t,s)=(x,g(t,s))$ and $r(y,s)=(y,0)$ is the required retraction.
+\end{proof}
+
+\ex The smash product between two based spaces is defined by $$(C,c_0)\wedge (D,d_0):=(C\times D)/\left(C\times \{d_0\}\cup \{c_0\}\times D\right).$$ Show that $X/A\wedge Y/B=(X\times Y)/(X\times B\cup A\times Y)$.
+\begin{proof}
+Let $p_1:X\times Y\to X/A\times Y/B$ be given by $p_1(x,y)=([x],[y])$ and $p_2:X/A\times Y/B\to X/A \wedge Y/B$ be given by $p_2(([x],[y]))=([[x]],[[y]])$. Then the composition $p_2\circ p_1$ is continuous and factors through $(X\times Y)/(X\times B\cup A\times Y)$, which implies that the canonical bijection between $(X\times Y)/(X\times B\cup A\times Y)$ and $X/A \wedge Y/B$ is continuous (using exercise 2). Using the definition of quotient topology several times, it can be shown that this bijection is also open, hence a homeomorphism.
+\end{proof}
+
+\ex Let $A=\{\frac{1}{n}\cup \{0\}\}\subseteq \R$. Show that $(I,A)$ does not have the HEP, i.e. the inclusion $A \hookrightarrow I$ is not a cofibration.
+\begin{proof}
+If $A\times J \cup I\times\{0\}$ was a retract of $I\times J$, the retraction would have to preserve connected subsets. But $A\times J \cup I\times\{0\}$ is locally connected while $I\times J$ is not, a contradiction.
+\end{proof}
+\end{document}

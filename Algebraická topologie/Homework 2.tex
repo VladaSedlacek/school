@@ -1,0 +1,80 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[czech]{babel}
+\usepackage{a4wide}
+\usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,tikz}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\N}{\mathrm{N}}
+\newcommand{\No}{\mathrm{N}_{\Qbb}^K}
+\newcommand{\Ok}{\ensuremath{\mathcal{O}_K}}
+\newcommand{\Ol}{\ensuremath{\mathcal{O}_L}}
+\newcommand{\Cl}{\ensuremath{\mathcal{C}l}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\rr}{\mathfrak{r}}
+\newcommand{\al}{\alpha}
+\newcommand{\Mat}{\ensuremath{\text{Mat}(2,\mathbb{Z})}}
+\newcommand{\Char}{\mathrm{char }}
+\newcommand{\blank}{{-}}
+\newcommand{\dd}{\partial}
+%\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+%\theoremstyle{definition}
+\newcounter{exercise}
+\newtheorem{ex}[exercise]{Exercise}
+%\newenvironment{sol}{\paragraph{Solution:}}{\hfill$\square$}
+%\newtheorem*{sol}{Solution}
+
+\begin{document}
+\pagestyle{fancy}                      %Pro větší­ možnosti práce se záhlaví­mi a zápatími
+\fancyhf{}                             %"vvyčištění záhlaví a zápatí"                                         
+%\renewcommand{\headheight}{25 pt}                  %
+\addtolength{\topmargin}{-30 pt}                   %
+\setlength{\headsep}{10 pt}                      %
+\fancyhead[L]{{\emph{M8130 Algebraic topology, homework 2}}}  %
+\fancyhead[R]{{\emph{Vladimír Sedláček}}}                 % Nastavení­ pro titulní­ stranu
+%\fancyfoot[L]{Školní rok 2016/2017}                %
+%\renewcommand{\footrulewidth}{0.8 pt}              %
+\renewcommand{\headrulewidth}{1 pt}                %               %
+\renewcommand*{\proofname}{Solution}
+%\setcounter{exercise}{2}
+\ex\mbox{} 
+\begin{proof}
+For any $b\in B$, we have $$j(b-pj(b))=jb-jp(jb)=0$$ by the assumption, hence $b-pj(b)\in \ker j=\im i$. Since $i$ is injective, this allows us to define $q(b):=i^{-1}(b-pj(b)).$ Then we have $$qi(a)=i^{-1}(i(a)-pji(a))=i^{-1}(i(a))=a$$ (since $ji=0$) for all $a\in A$, which shows that $qi=\id_A$. Also, for any $b\in B$, we have $$(iq+pj)(b)=i(i^{-1}(b-pj(b)))+pj(b)=b,$$
+which shows that $iq+pj=\id_B$ and we are done.
+\end{proof}
+
+\ex\mbox{} 
+\begin{proof}\mbox{}
+\begin{enumerate}[(1)]
+\item 
+Let $a,b,c$ be as in the formula and let $[c']=[c]\in H_n(C_*)$. Then there exists some $d\in C_{n+1}$ such that $c'=c+\dd d$ and since $g$ is surjective, there must also exist some $b'\in B_{n+1}$ such that $g(b')=d$. Then we have
+$$g(b+\dd b')=g(b)+g\dd (b')=c+\dd g(b')=c+\dd d=c'$$
+and $$f(a)=\dd b=\dd b+\dd \dd b'=\dd (b+\dd b'),$$
+which implies $\dd_*[c']=[a]=\dd_*[c]$.
+\item 
+If $[c]\in \im g_*$ then there is some $b\in \ker Z_n(B)$ such that $g(b)=c$, so that $$\dd [c]=[f^{-1}(\dd b)]=[f^{-1}(0)]=[0],$$ which shows that $\im g_*\subseteq \ker \dd_*$.\\
+Conversely, suppose that $\dd_*[c]=0$, i.e. we have $b\in B_n,a\in A_{n-1}$ such that $g(b)=c, f(a)=\dd b$ and $[a]=0$. Then there must exist $a'\in A_n$ such that $a=\dd a'$, which implies $\dd b=f\dd a'=\dd f(a')$, hence $\dd (b-f(a'))=0$ and $b-f(a')\in Z_n(B)$. Also $g(b-f(a'))=g(b)=c$, which shows that $g_*[b-f(a')]=[c]$. Thus $\im g_*\supseteq \ker \dd_*$.
+\item Let $a\in Z_n(a)$. Then $f_*[a]=0$ iff $f(a)=\dd b$ for some $b\in B_{n+1}$ iff $[a]=\dd_*(g_*[b])$, which shows that $\ker f_*=\im \dd_*$ (the last equivalence holds because $\dd g(b)=g\dd (b)=gf(a)=0$, hence $g(b)\in Z_{n+1}(C)$).
+\end{enumerate} 
+\end{proof}
+
+\end{document}

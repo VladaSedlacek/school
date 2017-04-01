@@ -1,0 +1,73 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[czech]{babel}
+\usepackage{a4wide}
+\usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,tikz}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\cok}{\mathrm{coker}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\N}{\mathrm{N}}
+\newcommand{\No}{\mathrm{N}_{\Qbb}^K}
+\newcommand{\Ok}{\ensuremath{\mathcal{O}_K}}
+\newcommand{\Ol}{\ensuremath{\mathcal{O}_L}}
+\newcommand{\Cl}{\ensuremath{\mathcal{C}l}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\rr}{\mathfrak{r}}
+\newcommand{\al}{\alpha}
+\newcommand{\Mat}{\ensuremath{\text{Mat}(2,\mathbb{Z})}}
+\newcommand{\Char}{\mathrm{char }}
+\newcommand{\blank}{{-}}
+%\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+%\theoremstyle{definition}
+\newcounter{exercise}
+\newtheorem{ex}[exercise]{Exercise}
+%\newenvironment{sol}{\paragraph{Solution:}}{\hfill$\square$}
+%\newtheorem*{sol}{Solution}
+
+\begin{document}
+\pagestyle{fancy}                      %Pro větší­ možnosti práce se záhlaví­mi a zápatími
+\fancyhf{}                             %"vvyčištění záhlaví a zápatí"                                         
+%\renewcommand{\headheight}{25 pt}                  %
+\addtolength{\topmargin}{-30 pt}                   %
+\setlength{\headsep}{10 pt}                      %
+\fancyhead[L]{{\emph{M8130 Algebraic topology, homework 1}}}  %
+\fancyhead[R]{{\emph{Vladimír Sedláček}}}                 % Nastavení­ pro titulní­ stranu
+%\fancyfoot[L]{Školní rok 2016/2017}                %
+%\renewcommand{\footrulewidth}{0.8 pt}              %
+\renewcommand{\headrulewidth}{1 pt}                %               %
+\renewcommand*{\proofname}{Solution}
+\setcounter{exercise}{2}
+\ex\mbox{} 
+\begin{proof}
+Let $u,v$ be any two distinct points of $X$, so that $(u,v)\in (X\times X) \setminus \Delta$. Since $X$ is Hausdorff, there exist open disjoint sets $U,V\subseteq X$ such that $u\in U, v\in V$. Then $(u,v)\in U\times V\subseteq (X\times X) \setminus \Delta$. Since $U\times V$ is open in the product topology (it belongs to its basis) and $(u,v)\in (X\times X) \setminus \Delta$ were chosen arbitrarily, this means that $(X\times X) \setminus \Delta$ is open, hence $\Delta$ is closed.
+\end{proof}
+
+\ex\mbox{} 
+\begin{proof}
+Consider the map $f:X\to X\times X$ given by $f(x)=(x,r(x))$ (which is clearly continuous) and let $\Delta_A:=\{(a,a)\in A\times A\}$. Since $r(a)=a$ for $a\in A$ by the definition of retraction, it follows that $f(x)\in \Delta_A$ if and only if $x\in A$. Also $A$ is Hausdorff (it is a subset of a Hausdorff space $X$), so $\Delta_A$ is closed by the previous exercise, hence $A=f^{-1}(\Delta_A)$ is closed as well.
+\end{proof}
+
+\ex\mbox{} 
+\begin{proof}
+Since $A \hookrightarrow X$ is a cofibration, there exists a retraction $r:X\times I\to X\times\{0\}\cup A\times I$. Using the previous exercise, this implies that $X\times\{0\}\cup A\times I$ is closed in $X\times I$ (because $X\times I$ is Hausdorff, as a product of two Hasudorff spaces). Therefore $X\times I\setminus(X\times\{0\}\cup A\times I)$ is open, and since the canonical projection $p:X\times I\to X$ is open, the image $$p(X\times I\setminus(X\times\{0\}\cup A\times I))=X\setminus A$$
+must be open as well. Thus $A$ is closed.
+\end{proof}
+\end{document}

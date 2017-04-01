@@ -1,0 +1,83 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[czech]{babel}
+\usepackage{a4wide}
+\usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,tikz}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\N}{\mathrmACN{N}}
+\newcommand{\No}{\mathrm{N}_{\Qbb}^K}
+\newcommand{\Ok}{\ensuremath{\mathcal{O}_K}}
+\newcommand{\Ol}{\ensuremath{\mathcal{O}_L}}
+\newcommand{\Cl}{\ensuremath{\mathcal{C}l}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\rr}{\mathfrak{r}}
+\newcommand{\al}{\alpha}
+\newcommand{\Mat}{\ensuremath{\text{Mat}(2,\mathbb{Z})}}
+\newcommand{\Char}{\mathrm{char }}
+\newcommand{\blank}{{-}}
+\newcommand{\dd}{\partial}
+%\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+%\theoremstyle{definition}
+\newcounter{exercise}
+\newtheorem{ex}[exercise]{Exercise}
+%\newenvironment{sol}{\paragraph{Solution:}}{\hfill$\square$}
+%\newtheorem*{sol}{Solution}
+
+\begin{document}
+\pagestyle{fancy}                      %Pro větší­ možnosti práce se záhlaví­mi a zápatími
+\fancyhf{}                             %"vvyčištění záhlaví a zápatí"                                         
+%\renewcommand{\headheight}{25 pt}                  %
+\addtolength{\topmargin}{-30 pt}                   %
+\setlength{\headsep}{10 pt}                      %
+\fancyhead[L]{{\emph{M8130 Algebraic topology 2017, homework 6}}}  %
+\fancyhead[R]{{\emph{Vladimír Sedláček}}}                 % Nastavení­ pro titulní­ stranu
+%\fancyfoot[L]{Školní rok 2016/2017}                %
+%\renewcommand{\footrulewidth}{0.8 pt}              %
+\renewcommand{\headrulewidth}{1 pt}                %               %
+\renewcommand*{\proofname}{Solution}
+%\setcounter{exercise}{2}
+\ex\mbox{} 
+\begin{proof}
+Let $X$ be the CW-complex $S^{2017}_1\vee S^{2017}_2\vee S_1^{2018} \cup e_2^{2018}\cup e^{2019}$ together with the constant attaching maps $S^{2017}_1\to e^0$, $S^{2017}_2\to e^0$ and $S^{2018}\to e^0$, an arbitrary attaching map $\dd D_2^{2018}=S^{2017}\to S_2^{2017}$ of degree $6$ and an arbitrary attaching map $\dd D^{2019}=S^{2018}\to S_1^{2018}$ of degree $4$ (we already know such maps do exist). Then the homology groups of $X$ are the same as the homology groups of the chain complex
+$$\dots \to 0 \to 0 \to \underbrace{\Z}_{\dim 2019} \xrightarrow{\cdot\begin{pmatrix}
+        4&0
+    \end{pmatrix}}\underbrace{\Z\oplus \Z}_{\dim 2018}\xrightarrow{\cdot\begin{pmatrix}
+        0&0\\
+        0&6\\
+    \end{pmatrix}}\underbrace{\Z\oplus\Z}_{\dim 2017}\to 0\to 0\to\dots\to\underbrace{0}_{\dim 1}\to \underbrace{\Z}_{\dim 0}\to 0.$$
+Therefore (since the kernel of $\cdot\begin{pmatrix}
+        0&0\\
+        0&6\\
+    \end{pmatrix}$ is $\Z\oplus 0$ and $\cdot\begin{pmatrix}
+        4&0
+    \end{pmatrix}$ is injective) we have
+\begin{equation*}
+\begin{split}
+H_0(X)&=\Z/0=\Z,\\
+H_{2017}(X)&=(\Z\oplus\Z)/(0\oplus 6\Z)=\Z\oplus \Z/6,\\
+H_{2018}(X)&=(\Z\oplus 0)/(4\Z\oplus 0)=\Z/4
+\end{split}
+\end{equation*}
+and all the other homology groups are trivial, as required.
+\end{proof}
+\end{document}

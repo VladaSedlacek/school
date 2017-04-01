@@ -1,0 +1,119 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{a4wide}
+\usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,mathtools}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\cok}{\mathrm{coker}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\N}{\mathrm{N}}
+\newcommand{\No}{\mathrm{N}_{\Qbb}^K}
+\newcommand{\Ok}{\ensuremath{\mathcal{O}_K}}
+\newcommand{\Ol}{\ensuremath{\mathcal{O}_L}}
+\newcommand{\Cl}{\ensuremath{\mathcal{C}l}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\rr}{\mathfrak{r}}
+\newcommand{\al}{\alpha}
+\newcommand{\Mat}{\ensuremath{\text{Mat}(2,\mathbb{Z})}}
+\newcommand{\Char}{\mathrm{char }}
+\newcommand{\blank}{{-}}
+\newcommand{\dd}{\partial}
+%\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+%\theoremstyle{definition}
+\newtheorem{ex}{Exercise}
+%\newenvironment{sol}{\paragraph{Solution:}}{\hfill$\square$}
+%\newtheorem*{sol}{Solution}
+
+\begin{document}
+\pagestyle{fancy}                      %Pro větší­ možnosti práce se záhlaví­mi a zápatími
+\fancyhf{}                             %"vvyčištění záhlaví a zápatí"                                         
+%\renewcommand{\headheight}{25 pt}                  %
+\addtolength{\topmargin}{-30 pt}                   %
+\setlength{\headsep}{10 pt}                      %
+\fancyhead[L]{{\emph{M8130 Algebraic topology, tutorial 02, 2017}}}  %
+\fancyhead[R]{{\emph{2.3.2017}}}                 % Nastavení­ pro titulní­ stranu
+%\fancyfoot[L]{Školní rok 2016/2017}                %
+%\renewcommand{\footrulewidth}{0.8 pt}              %
+\renewcommand{\headrulewidth}{1 pt}                %               %
+\renewcommand*{\proofname}{Solution}
+
+\ex Show that $(S^m,*)\wedge (S^n,*)\cong (S^{m+n},*)$.
+\begin{proof} Using exercises 3 and 6 from the previous tutorial, we have 
+\begin{equation*}
+\begin{split}
+(S^m,*)\wedge (S^n,*)&\cong (D^m/S^{m-1})\wedge(D^n/S^{n-1})\cong \\
+&\cong(D^m\times D^n)/(S^{m-1}\times D^m\cup D^n\times S^{n-1})\cong\\
+&\cong  (I^m\times I^n)/(\dd I^m\times I^n\cup \dd I^n\times I^m)=\\
+&=I^{m+n}/(\dd (I^{m+n}))\cong D^{m+n}/\dd D^{m+n}\cong S^{m+n}.
+\end{split}
+\end{equation*}
+
+\end{proof}
+
+\ex Show that $\C P^n$ is a CW-complex.
+\begin{proof}
+Clearly $\C P^0$ is a point. Next, we have
+\begin{equation*}
+\begin{split}
+\C P^n&=\C^{n+1}\setminus\{0\}/\{v\sim \lambda v, \lambda\in\C\setminus\{0\}\}\cong S^{2n+1}\setminus\{0\}/\{v\sim \lambda v, |\lambda|=1\}\cong\\
+&\cong \{(w,\sqrt{1-|w^2|}),\in \C^{n+1},w\in D^{2n}\}/\{w\sim \lambda w \text{ for }|w|=1\}\cong\\
+&\cong (D^{2n}\cup S^{2n-1})/\{w\sim \lambda w \text{ for }w\in S^{2n-1}\}=D^{2n}\cup_f\C.
+\end{split}
+\end{equation*}
+Taking the canonical projection $S^{2n-1}\to\C P^{n-1}\cong S^{2n-1}/\sim$ as the attaching map now yields a CW-complex with one cell in every even dimension and none in the odd ones.
+\end{proof}
+
+\ex From the lecture we know that $A:=\{\frac{1}{n},n\in\N\}\cup\{0\}$ with the subset topology from $\R$ is not a CW-complex. Show that $X:=I\times\{0\}\cup A\times I$ is not a CW-complex.
+\begin{proof}
+Suppose that $X$ is a CW-complex. Then it cannot contain cells of dimension $\geq 2$, because it becomes disconnected after removing any point. In fact, the space obtained after removing any point $(a,0)$ with $a\in A$ has more than two connected components (three, to be exact), so these points cannot lie inside a 1-cell. Therefore these points must form 0-cells, but we already know that $A$ does not have discrete topology, a contradiction.
+\end{proof}
+
+\ex Show that the Hawaiian earring given by $$X=\{(x,y)\in\R^2,(x-\frac{1}{n})^2+y^2=\frac{1}{n^2} \text{ for some } n\}$$ is not a CW-complex.
+\begin{proof}
+Suppose that $X$ is a CW-complex. Using similar arguments as in the previous exercise, we can see that $(0,0)$ must be a 0-cell and that $X$ must have either infinitely many 0-cells, or infinitely many 1-cells. But since $X$ is compact, exercise 5 implies that $X$ can have only finitely many cells, a contradiction.
+\end{proof}
+
+\ex Prove that every compact set $A$ in a CW-complex $X$ can have a nonempty intersection with only finitely many cells.
+\begin{proof}
+$X$ is comprised of cells that are indexed by elemnts of some set $J$. Let $B$ be a set containing exactly one point from each intersection $A\cap e^{\beta}, \beta\in J$. We need to show that $B$ is closed a discrete, which will imply that $B$ is compact (since $B\subseteq A$) and discrete, hence finite. We know that a set $C\subseteq X^{n}$ is closed iff both $C\cap X^{n-1}$ and $C\cap e_{\alpha}^n$ for each $\alpha\in J$ are closed, because $D^n\cup_f X^{n-1}$ is a pushout. Using induction, this implies that $C\subseteq X$ is closed iff $C\cap e_\alpha$ is closed for each $\alpha\in J$. Since $B\cap e_\alpha$ contains at most one point for any $\alpha\in J$ and $X$ is $T_1$ (even Hausdorff), this shows that $B$ is closed. Using the same argument, $B$ with any one point removed is closed. Therefore $B$ is also discrete and we are done.
+\end{proof}
+
+\ex Show that for a short exact sequence $0\to A\xrightarrow{f} B\xrightarrow{g}C\to 0$ of abelian groups (or more generally modules over a commutative ring) the following are equivalent:
+\begin{enumerate}[(1)]
+\item There exists $p:B\to A$ such that $pf=\id_A$.
+\item There exists $q:C\to B$ such that $gq=\id_C$.
+\item There exist $p:B\to A$ and $q:C\to B$ such that $fp+qg=\id_B$.
+\end{enumerate}
+(Another equivalent condition is $B\cong A\oplus C$, with $(p,g)$ and $f+q$ being the respective inverse isomorphisms.)
+\begin{proof}\mbox{}\\
+$(1)\implies(2)$ and $(3)$:\\
+Since $g$ is surjective, for any $c\in C$ there is some $b\in B$ such that $g(b)=c$. Moreover, for any other $b'\in B$ such that also $g(b')=c$, we have $b-fp(b)=b'-fp(b')$, since $b-b'\in\ker g=\im f$, so that $b-b'=f(a)$ and $$fp(b-b')=fpf(a)=f(a)=b-b'.$$ This shows that we can correctly define $q(c):=b-fp(b)$ for any such $b$. Then we have $$gq(c)=g(b)-gfp(b)=g(b)=c$$ (since $gf=0$), which shows that $gq=\id_C$, and also
+$qg(b)=b-fp(b)$, hence $fp+qg=\id_B$.\\\\
+$(3)\implies(1)$ and $(2)$:\\
+Applying $f$ from the right to the equation $fp+qg=\id_B$ yields $fpf=f$ (since $gf=0$), which together with the fact that $f$ is injective implies $pf=\id_A$. Similarly, applying $g$ from the left yields $gqg=g$, which together with the fact that $g$ is surjective implies $gq=\id_C$.
+\end{proof}
+
+\ex Let $0\to A_*\xrightarrow{f} B_*\xrightarrow{g}C_*\to 0$ be a short exact sequence of chain modules. We have defined the connecting homomorphism $\dd_*:H_n(C)\to H_{n-1}(A)$ by the formula $\dd_*[c]=[a]$, where $\dd c=0$, $f(a)=\dd b$ and $g(b)=c$. Show that this definition does not depend on $a$ nor $b$.
+\begin{proof}
+We have $\dd a=0$ iff $f(\dd a)=0$ (using injectivity of $f$) iff $0=\dd f(a)=\dd \dd b$, and the last condition is true.\\
+Now let $b,b'\in B$ be such that $g(b)=g(b')=c$ with $a,a'\in A$ such that $f(a)=b, f(a')=b'$. Then $b-b'\in \ker g=\im f$, so $b-b'=f(\overline{a})$ for some $\overline{a}\in A$. Therefore $f(\dd \overline{a})=\dd b-\dd b'=f(a-a')$ and the injectivity of $f$ implies $\dd \overline{a}=a-a'$, hence $[0]=[\dd a']=[a]-[a']$ and we are done.
+\end{proof} 
+\end{document}
